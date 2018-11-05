@@ -24,7 +24,7 @@ static int		check_brackets_valid(char *str)
 static int		check_brackets(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while(str[i])
 	{
@@ -45,9 +45,16 @@ int		check_is_valid(char *str)
 {
 	int i;
 	int op;
+	size_t	valid;
 
 	op = 0;
 	i = 0;
+	valid = ft_strlen(str);
+	if (valid == 1 && (str[0] >= '0' && str[0] <= '9'))
+	{
+		ft_putchar(str[0]);
+		exit(EXIT_SUCCESS);
+	}
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '+' && str[i] != '-' &&
