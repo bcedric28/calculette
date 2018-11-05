@@ -45,16 +45,26 @@ int		check_is_valid(char *str)
 {
 	int i;
 	int op;
-	size_t	valid;
+	int valid;
 
+	valid = 0;
 	op = 0;
 	i = 0;
-	valid = ft_strlen(str);
-	if (valid == 1 && (str[0] >= '0' && str[0] <= '9'))
+	while (str[i])
 	{
-		ft_putchar(str[0]);
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			valid = 1;
+			break ;
+		}
+		i++;
+	}
+	if (valid == 0)
+	{
+		ft_putendl(str);
 		exit(EXIT_SUCCESS);
 	}
+	i = 0;
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '+' && str[i] != '-' &&
